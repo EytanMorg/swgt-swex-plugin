@@ -418,33 +418,33 @@ module.exports = {
     }
 
     //Clean GetServerGuildWarDefenseDeckList resp
-    if(resp['command'] == 'GetServerGuildWarDefenseDeckList'){
-      try{
-        for(var root_element_name in resp){
+    if (resp['command'] == 'GetServerGuildWarDefenseDeckList') {
+      try {
+        for (var root_element_name in resp) {
           console.log(root_element_name);
-          if(root_element_name == "deck_list"){
+          if (root_element_name == "deck_list") {
             var deck_list = resp[root_element_name];
             for (var deck_list_index in deck_list) {
               var deck_list_child_element = deck_list[deck_list_index];
-              
+
               delete deck_list_child_element.total_win_count;
               delete deck_list_child_element.total_draw_count;
               delete deck_list_child_element.total_lose_count;
-        
+
               delete deck_list_child_element.win_count;
               delete deck_list_child_element.draw_count;
               delete deck_list_child_element.lose_count;
             }
           }
-          if(root_element_name == "round_unit_list"){
+          if (root_element_name == "round_unit_list") {
             var round_unit_list = resp[root_element_name];
-            
-            for(var round_unit_list_index in round_unit_list){
+
+            for (var round_unit_list_index in round_unit_list) {
               var round_unit_list_child_element = round_unit_list[round_unit_list_index];
-              
-              for(var round_unit_list_child_element_index in round_unit_list_child_element){
+
+              for (var round_unit_list_child_element_index in round_unit_list_child_element) {
                 var round_unit_list_child_element_element = round_unit_list_child_element[round_unit_list_child_element_index];
-                
+
                 delete round_unit_list_child_element_element.unit_info.accuracy;
                 delete round_unit_list_child_element_element.unit_info.artifacts;
                 delete round_unit_list_child_element_element.unit_info.atk;
@@ -478,7 +478,7 @@ module.exports = {
             }
           }
         }
-      }catch(e){}
+      } catch (e) { }
     }
 
     this.writeToFile(proxy, req, resp, 'SWGT');
@@ -1282,7 +1282,7 @@ module.exports = {
     } else {
       var respTest = JSON.stringify(respCopy);
       var cacheTest = JSON.stringify(cache[action]);
-      
+
       if (cacheTest === respTest) {
         proxy.log({ type: 'debug', source: 'plugin', name: this.pluginName, message: "Matched cache:  " + action });
         return true;
