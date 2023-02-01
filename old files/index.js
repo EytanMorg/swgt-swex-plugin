@@ -1,15 +1,3 @@
-const checkSiteAPI = require('./modules/checkSiteAPI')
-const checkVersion = require('./modules/checkVersion')
-const hasAPIEnabled = require('./modules/hasAPIEnabled')
-const hasAPISettings = require('./modules/hasAPISettings')
-const hasCacheMatch = require('./modules/hasCacheMatch')
-const process3MDCRequest = require('./modules/process3MDCRequest')
-const processRequest = require('./modules/processRequest')
-const processSWGTHistoryRequest = require('./modules/processSWGTHistoryRequest')
-const uploadToWebService = require('./modules/uploadToWebService')
-const verifyPacketToSend = require('./modules/verifyPacketToSend')
-const writeToFile = require('./modules/writeToFile')
-
 const request = require('request');
 const fs = require('fs');
 const path = require('path');
@@ -23,19 +11,7 @@ var apiReference = {
     enabledGuilds: [],
     enabledWizards: []//TODO:Limit entries based on return guild---will need wizardID-Guild Map
 };
-
 module.exports = {
-    ...checkSiteAPI,
-    ...checkVersion,
-    ...hasAPIEnabled,
-    ...hasAPISettings,
-    ...hasCacheMatch,
-    ...process3MDCRequest,
-    ...processRequest,
-    ...processSWGTHistoryRequest,
-    ...uploadToWebService,
-    ...verifyPacketToSend,
-    ...writeToFile,
     defaultConfig: {
         enabled: true,
         saveToFile: false,
